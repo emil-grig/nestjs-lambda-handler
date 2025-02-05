@@ -1,0 +1,28 @@
+service: s3-lambda-handler
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+
+functions:
+  s3Handler:
+    handler: dist/src/main.handler
+    events:
+      - s3:
+          bucket: test-bucket
+          event: s3:ObjectCreated:*
+
+plugins:
+  - serverless-offline
+  - serverless-s3-local
+
+custom:
+  s3:
+    address: 127.0.0.1
+    port: 4569
+    buckets:
+      - name: test-bucket
+  serverless-offline:
+    httpPort: 3000 # Port for HTTP endpoints
+    lambdaPort: 3002 # Port for Lambda debugging

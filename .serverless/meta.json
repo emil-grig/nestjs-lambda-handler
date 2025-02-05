@@ -1,0 +1,197 @@
+{
+  "/Users/emgr2104/work/EXERCITII/s3-lambda-handler": {
+    "versionSfCore": null,
+    "versionFramework": "4.4.18",
+    "isWithinCompose": false,
+    "isCompose": false,
+    "composeOrgName": null,
+    "composeResolverProviders": {
+      "default-aws-credential-resolver": "<REDACTED>",
+      "sls": {
+        "instance": {
+          "credentials": "<REDACTED>",
+          "serviceConfigFile": {
+            "service": "s3-lambda-handler",
+            "provider": {
+              "name": "aws",
+              "runtime": "nodejs18.x",
+              "region": "us-east-1",
+              "stage": "local",
+              "versionFunctions": true
+            },
+            "functions": {
+              "s3Handler": {
+                "handler": "dist/main.handler",
+                "events": [
+                  {
+                    "s3": {
+                      "bucket": "test-bucket",
+                      "event": "s3:ObjectCreated:*"
+                    }
+                  }
+                ]
+              }
+            },
+            "plugins": [
+              "serverless-offline",
+              "serverless-localstack",
+              "serverless-offline-s3"
+            ],
+            "custom": {
+              "serverless-offline-s3": {
+                "buckets": [
+                  {
+                    "name": "test-bucket"
+                  }
+                ]
+              },
+              "serverless-offline": {
+                "port": 3000,
+                "lambdaPort": 3002,
+                "noPrependStageInUrl": true,
+                "useChildProcesses": true
+              }
+            },
+            "resources": {
+              "Resources": {
+                "S3Bucket": {
+                  "Type": "AWS::S3::Bucket",
+                  "Properties": {
+                    "BucketName": "test-bucket"
+                  }
+                }
+              }
+            }
+          },
+          "configFileDirPath": "/Users/emgr2104/work/EXERCITII/s3-lambda-handler",
+          "config": {
+            "type": "sls"
+          },
+          "options": {
+            "stage": "local"
+          },
+          "stage": "local",
+          "dashboard": null,
+          "logger": {
+            "namespace": "s:core:resolver:sls",
+            "prefix": null,
+            "prefixColor": null
+          },
+          "_credentialsPromise": "<REDACTED>"
+        },
+        "resolvers": {}
+      }
+    },
+    "composeServiceName": null,
+    "servicePath": "/Users/emgr2104/work/EXERCITII/s3-lambda-handler",
+    "serviceConfigFileName": "serverless.yml",
+    "service": {
+      "service": "s3-lambda-handler",
+      "provider": {
+        "name": "aws",
+        "runtime": "nodejs18.x",
+        "region": "us-east-1",
+        "stage": "local",
+        "versionFunctions": true
+      },
+      "functions": {
+        "s3Handler": {
+          "handler": "dist/main.handler",
+          "events": [
+            {
+              "s3": {
+                "bucket": "test-bucket",
+                "event": "s3:ObjectCreated:*"
+              }
+            }
+          ]
+        }
+      },
+      "plugins": [
+        "serverless-offline",
+        "serverless-localstack",
+        "serverless-offline-s3"
+      ],
+      "custom": {
+        "serverless-offline-s3": {
+          "buckets": [
+            {
+              "name": "test-bucket"
+            }
+          ]
+        },
+        "serverless-offline": {
+          "port": 3000,
+          "lambdaPort": 3002,
+          "noPrependStageInUrl": true,
+          "useChildProcesses": true
+        }
+      },
+      "resources": {
+        "Resources": {
+          "S3Bucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+              "BucketName": "test-bucket"
+            }
+          }
+        }
+      }
+    },
+    "serviceRawFile": "service: s3-lambda-handler\n\nprovider:\n  name: aws\n  runtime: nodejs18.x\n  region: us-east-1\n\nfunctions:\n  s3Handler:\n    handler: dist/main.handler\n    events:\n      - s3:\n          bucket: test-bucket\n          event: s3:ObjectCreated:*\n\nplugins:\n  - serverless-offline\n  - serverless-localstack\n  - serverless-offline-s3\n\ncustom:\n  serverless-offline-s3:\n    buckets:\n      - name: test-bucket\n  serverless-offline:\n    port: 3000 # Port for running the local API\n    lambdaPort: 3002 # Port for invoking Lambda functions\n    noPrependStageInUrl: true # Optional: Removes the stage from local URLs\n    useChildProcesses: true # Optional: Enables child processes for isolated execution\n\nresources:\n  Resources:\n    S3Bucket:\n      Type: AWS::S3::Bucket\n      Properties:\n        BucketName: test-bucket\n",
+    "command": [
+      "offline"
+    ],
+    "options": {
+      "stage": "local"
+    },
+    "error": {
+      "message": "Cannot find module '@serverless/utils/log'\nRequire stack:\n- /Users/emgr2104/work/EXERCITII/s3-lambda-handler/node_modules/serverless-offline-s3/src/index.js",
+      "stack": "Error: Cannot find module '@serverless/utils/log'\nRequire stack:\n- /Users/emgr2104/work/EXERCITII/s3-lambda-handler/node_modules/serverless-offline-s3/src/index.js\n    at Function._resolveFilename (node:internal/modules/cjs/loader:1410:15)\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1061:19)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1066:22)\n    at Function._load (node:internal/modules/cjs/loader:1215:37)\n    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:234:24)\n    at Module.require (node:internal/modules/cjs/loader:1496:12)\n    at require (node:internal/modules/helpers:135:16)\n    at Object.<anonymous> (/Users/emgr2104/work/EXERCITII/s3-lambda-handler/node_modules/serverless-offline-s3/src/index.js:3:13)\n    at Module._compile (node:internal/modules/cjs/loader:1740:14)",
+      "code": "MODULE_NOT_FOUND"
+    },
+    "params": {},
+    "machineId": "0c8b106b4f2222cf2dbcea31ad3ed434",
+    "stage": "local",
+    "accessKeyV2": "<REDACTED>",
+    "accessKeyV1": "<REDACTED>",
+    "orgId": "9f30fbb0-1623-498e-b198-f3ed9539816c",
+    "orgName": "emil1992",
+    "userId": "29m3NCY5L7dpYxSTd4",
+    "dashboard": {
+      "isEnabledForService": false,
+      "requiredAuthentication": false,
+      "orgFeaturesInUse": null,
+      "orgObservabilityIntegrations": null,
+      "serviceAppId": null,
+      "serviceProvider": null,
+      "instanceParameters": null
+    },
+    "userName": "emil1992",
+    "subscription": null,
+    "userEmail": "emil.grigore92@gmail.com",
+    "serviceProviderAwsRegion": "us-east-1",
+    "serviceProviderAwsCredentials": "<REDACTED>",
+    "serviceProviderAwsAccountId": "891376995469",
+    "projectType": "traditional",
+    "versionSf": "4.4.18",
+    "serviceUniqueId": null,
+    "serviceProviderAwsCfStackId": "arn:aws:cloudformation:us-east-1:000000000000:stack/s3-lambda-handler-local/7910c17e",
+    "serviceProviderAwsCfStackCreated": "2025-01-15T08:34:05.047Z",
+    "serviceProviderAwsCfStackUpdated": "2025-01-15T08:34:05.047Z",
+    "serviceProviderAwsCfStackStatus": "CREATE_COMPLETE",
+    "serviceProviderAwsCfStackOutputs": [
+      {
+        "OutputKey": "ServerlessDeploymentBucketName",
+        "OutputValue": "serverless-framework-deployments-us-east-1-98994b62-d9f7",
+        "ExportName": "sls-s3-lambda-handler-local-ServerlessDeploymentBucketName"
+      },
+      {
+        "OutputKey": "S3HandlerLambdaFunctionQualifiedArn",
+        "OutputValue": "arn:aws:lambda:us-east-1:000000000000:function:s3-lambda-handler-local-s3Handler:1",
+        "Description": "Current Lambda function version",
+        "ExportName": "sls-s3-lambda-handler-local-S3HandlerLambdaFunctionQualifiedArn"
+      }
+    ]
+  }
+}
